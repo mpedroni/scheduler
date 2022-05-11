@@ -11,7 +11,7 @@
 #include <string.h>
 
 #include "list.h"
-#include "schedule_rr.h"
+#include "schedule_sjf.c"
 #include "task.h"
 
 #define SIZE 100
