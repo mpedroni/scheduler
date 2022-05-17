@@ -8,13 +8,12 @@ CFLAGS=-Wall
 
 clean:
 	rm -rf *.o
-	rm -rf rr
-	rm -rf priority_rr
-	rm -rf sjf
+	rm -rf bin/
 
 sjf: driver.o list.o CPU.o
-	$(CC) $(CFLAGS) -o sjf driver.o list.o CPU.o
-	./sjf sjf_schedule.txt
+	mkdir bin
+	$(CC) $(CFLAGS) -o bin/sjf driver.o list.o CPU.o
+	./bin/sjf sjf_schedule.txt
 
 rr: driver.o list.o CPU.o schedule_rr.o
 	$(CC) $(CFLAGS) -o rr driver.o schedule_rr.o list.o CPU.o
