@@ -11,7 +11,7 @@ clean:
 	rm -rf bin/
 
 sjf: driver.o list.o CPU.o
-	mkdir bin
+	mkdir -p bin
 	$(CC) $(CFLAGS) -o bin/sjf driver.o list.o CPU.o
 	./bin/sjf sjf_schedule.txt
 
