@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "CPU.h"
 #include "list.h"
 #include "schedulers.h"
 #include "task.h"
+
+static int const TIME_UNITS_PER_RUN = 10;
 
 void add(char *name, int priority, int burst)
 {
@@ -38,5 +41,19 @@ void add(char *name, int priority, int burst)
 
 void schedule()
 {
-    traverse(*head);
+    struct node *temp;
+    struct node *node = *head;
+    while (node != NULL)
+    {
+        run(node->task, TIME_UNITS_PER_RUN);
+        node->task->burst -= TIME_UNITS_PER_RUN;
+
+        if (node->task->burst == 0)
+        {
+            temp = node;
+            node = node->next;
+            free(temp->task);
+            free(temp);
+        }
+    }
 }
