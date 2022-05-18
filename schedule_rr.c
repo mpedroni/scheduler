@@ -16,7 +16,7 @@ void add(char *name, int priority, int burst)
     task->priority = priority;
     task->burst = burst;
     task->tid = taskId++;
-    task->quantum = -1;
+    task->quantum = QUANTUM;
 
     if (head == NULL)
     {
@@ -28,32 +28,34 @@ void add(char *name, int priority, int burst)
     append(head, task);
 }
 
+static int min(a, b)
+{
+    return a <= b ? a : b;
+}
+
 // invoke the scheduler
 void schedule()
 {
-
     while (*head != NULL)
     {
-        if ((*head)->task->quantum == -1)
-        {
-            (*head)->task->quantum = malloc(sizeof(int));
-            (*head)->task->quantum = QUANTUM;
-        }
+        int quantum = (*head)->task->quantum;
+        int burst = (*head)->task->burst;
+        int slice = min(quantum, burst);
 
-        run((*head)->task, TIME_UNITS_PER_RUN);
+        run((*head)->task, slice);
 
-        (*head)->task->burst -= TIME_UNITS_PER_RUN;
-        (*head)->task->quantum -= TIME_UNITS_PER_RUN;
+        (*head)->task->burst -= slice;
+        (*head)->task->quantum -= slice;
 
-        if ((*head)->task->burst <= 0)
+        if ((*head)->task->burst == 0)
         {
             delete (head, (*head)->task);
             continue;
         }
 
-        if ((*head)->task->quantum <= 0)
+        if ((*head)->task->quantum == 0)
         {
-            (*head)->task->quantum = -1;
+            (*head)->task->quantum = QUANTUM;
             append_node(head, *head);
         }
     }

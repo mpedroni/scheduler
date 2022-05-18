@@ -15,9 +15,9 @@ sjf: driver.o list.o CPU.o
 	$(CC) $(CFLAGS) -o bin/sjf driver.o list.o CPU.o
 	./bin/sjf sjf-schedule.txt
 
-rr: driver.o list.o CPU.o schedule_rr.o
+rr: driver.o list.o CPU.o
 	mkdir -p bin
-	$(CC) $(CFLAGS) -o bin/rr driver.o schedule_rr.o list.o CPU.o
+	$(CC) $(CFLAGS) -o bin/rr driver.o list.o CPU.o
 	./bin/rr rr-schedule.txt
 
 priority_rr: driver.o list.o CPU.o schedule_rrp.o
@@ -25,9 +25,6 @@ priority_rr: driver.o list.o CPU.o schedule_rrp.o
 
 driver.o: driver.c
 	$(CC) $(CFLAGS) -c driver.c
-
-schedule_rr.o: schedule_rr.c
-	$(CC) $(CFLAGS) -c schedule_rr.c
 	
 schedule_rrp.o: schedule_rrp.c
 	$(CC) $(CFLAGS) -c schedule_rrp.c
