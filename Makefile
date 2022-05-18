@@ -20,14 +20,15 @@ rr: driver.o list.o CPU.o
 	$(CC) $(CFLAGS) -o bin/rr driver.o list.o CPU.o
 	./bin/rr rr-schedule.txt
 
-priority_rr: driver.o list.o CPU.o schedule_rrp.o
-	$(CC) $(CFLAGS) -o priority_rr driver.o schedule_priority_rr.o list.o CPU.o
-
+priority_rr: driver.o list.o CPU.o 
+	mkdir -p bin
+	$(CC) $(CFLAGS) -o bin/priority_rr driver.o list.o CPU.o
+	./bin/rr rr-schedule_pri.txt
 driver.o: driver.c
 	$(CC) $(CFLAGS) -c driver.c
 	
-schedule_rrp.o: schedule_rrp.c
-	$(CC) $(CFLAGS) -c schedule_rrp.c
+schedule_rrp_fifo.o: schedule_rrp_fifo.c
+	$(CC) $(CFLAGS) -c schedule_rrp_fifo.c
 
 list.o: list.c list.h
 	$(CC) $(CFLAGS) -c list.c

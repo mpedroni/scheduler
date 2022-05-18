@@ -13,6 +13,7 @@ typedef struct task
     int priority;
     int burst;
     int quantum;
+    int remaining;
 } Task;
 
 #endif
