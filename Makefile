@@ -23,8 +23,8 @@ rr: driver.o list.o CPU.o
 priority_rr: driver.o list.o CPU.o 
 	mkdir -p bin
 	$(CC) $(CFLAGS) -o bin/priority_rr driver.o list.o CPU.o
-	./bin/rr rr-schedule_pri.txt
-driver.o: driver.c
+	./bin/priority_rr rr-schedule_pri.txt
+driver.o: driver.c 
 	$(CC) $(CFLAGS) -c driver.c
 	
 schedule_rrp_fifo.o: schedule_rrp_fifo.c

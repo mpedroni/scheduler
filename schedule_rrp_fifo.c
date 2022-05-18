@@ -33,7 +33,7 @@ Task *nextTask(struct node *tl) {
 
 void schedule() {
 
-    for(size_t p = MAX_PRIORITY; p >= MIN_PRIORITY; --p) {
+    for(size_t p = MIN_PRIORITY; p <= MAX_PRIORITY; p++) {
         nextNode = tasks[p];
         while(tasks[p]) {
             Task *t = nextTask(tasks[p]);
