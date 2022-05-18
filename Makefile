@@ -13,10 +13,12 @@ clean:
 sjf: driver.o list.o CPU.o
 	mkdir -p bin
 	$(CC) $(CFLAGS) -o bin/sjf driver.o list.o CPU.o
-	./bin/sjf sjf_schedule.txt
+	./bin/sjf sjf-schedule.txt
 
 rr: driver.o list.o CPU.o schedule_rr.o
-	$(CC) $(CFLAGS) -o rr driver.o schedule_rr.o list.o CPU.o
+	mkdir -p bin
+	$(CC) $(CFLAGS) -o bin/rr driver.o schedule_rr.o list.o CPU.o
+	./bin/rr rr-schedule.txt
 
 priority_rr: driver.o list.o CPU.o schedule_rrp.o
 	$(CC) $(CFLAGS) -o priority_rr driver.o schedule_priority_rr.o list.o CPU.o

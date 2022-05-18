@@ -6,8 +6,6 @@
 #include "schedulers.h"
 #include "task.h"
 
-static int const TIME_UNITS_PER_RUN = 10;
-
 void add(char *name, int priority, int burst)
 {
     static int taskId = 1;
@@ -56,4 +54,6 @@ void schedule()
             free(temp);
         }
     }
+
+    free(head);
 }

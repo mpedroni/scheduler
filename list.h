@@ -13,10 +13,11 @@ struct node
 };
 
 // insert and delete operations.
+void append(struct node **head, Task *task);
+void append_node(struct node **head, struct node *node);
+void delete (struct node **head, Task *task);
 void insert(struct node **head, Task *task);
 void insert_before(struct node **head, Task *task, struct node *node);
-void append(struct node **head, Task *task);
-void delete (struct node **head, Task *task);
 void traverse(struct node *head);
 
 #endif

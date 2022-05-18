@@ -35,6 +35,23 @@ void append(struct node **head, Task *newTask)
     temp->next = newNode;
 }
 
+void append_node(struct node **head, struct node *node)
+{
+    if (*head == node)
+    {
+        (*head) = node->next;
+    }
+
+    struct node *temp = *head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = node;
+    node->next = NULL;
+}
+
 void insert_before(struct node **head, Task *task, struct node *node)
 {
     struct node *newNode = malloc(sizeof(struct node));
