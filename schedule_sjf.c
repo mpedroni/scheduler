@@ -39,21 +39,9 @@ void add(char *name, int priority, int burst)
 
 void schedule()
 {
-    struct node *temp;
-    struct node *node = *head;
-    while (node != NULL)
+    while (*head != NULL)
     {
-        run(node->task, TIME_UNITS_PER_RUN);
-        node->task->burst -= TIME_UNITS_PER_RUN;
-
-        if (node->task->burst == 0)
-        {
-            temp = node;
-            node = node->next;
-            free(temp->task);
-            free(temp);
-        }
+        run((*head)->task, (*head)->task->burst);
+        *head = (*head)->next;
     }
-
-    free(head);
 }
