@@ -9,12 +9,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "list.h"
 #include "schedule_rr.c"
 #include "task.h"
 
 #define SIZE 100
+#define MILISECONDS_PER_MINUTE 1000
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +29,8 @@ int main(int argc, char *argv[])
     int burst;
 
     in = fopen(argv[1], "r");
+
+    time_t begin = clock();
 
     while (fgets(task, SIZE, in) != NULL)
     {
@@ -45,6 +49,9 @@ int main(int argc, char *argv[])
 
     // invoke the scheduler
     schedule();
+
+    double execution_time = (double)(clock() - begin) / CLOCKS_PER_SEC * MILISECONDS_PER_MINUTE;
+    printf("\nexecution time: %fms\n", execution_time);
 
     return 0;
 }

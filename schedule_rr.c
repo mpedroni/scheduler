@@ -28,7 +28,7 @@ void add(char *name, int priority, int burst)
     append(head, task);
 }
 
-static int min(a, b)
+static int min(int a, int b)
 {
     return a <= b ? a : b;
 }
