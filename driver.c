@@ -12,8 +12,11 @@
 #include <time.h>
 
 #include "list.h"
-#include "schedule_rr.c"
 #include "task.h"
+
+#include "schedule_sjf.c"
+// #include "schedule_rr.c"
+// #include "schedule_rrp_fifo.c"
 
 #define SIZE 100
 #define MILISECONDS_PER_MINUTE 1000
