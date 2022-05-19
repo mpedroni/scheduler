@@ -26,9 +26,6 @@ priority_rr: driver.o list.o CPU.o
 	./bin/priority_rr rr-schedule_pri.txt
 driver.o: driver.c 
 	$(CC) $(CFLAGS) -c driver.c
-	
-schedule_rrp_fifo.o: schedule_rrp_fifo.c
-	$(CC) $(CFLAGS) -c schedule_rrp_fifo.c
 
 list.o: list.c list.h
 	$(CC) $(CFLAGS) -c list.c
