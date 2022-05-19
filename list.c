@@ -39,6 +39,9 @@ void append_node(struct node **head, struct node *node)
 {
     if (*head == node)
     {
+        if (node->next == NULL) // list has only one node
+            return;
+
         (*head) = node->next;
     }
 
