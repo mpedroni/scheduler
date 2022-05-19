@@ -13,8 +13,14 @@ Este repositório contém a implementação de diferentes políticas de escalona
 ## Executando as políticas de escalonamento
 
 Para executar a política desejada, basta incluir o arquivo correspondente a ela no arquivo `driver.c` e executar o comando `make <policy>`. Os arquivos e comando correspondentes à cada política são os seguintes:
-| Policy | Arquivo | Comando `make` |
-|------------------------|-----------------------|--------------------|
-| Smallest-Job First | `schedule_sjf.c` | `make sjf` |
-| Round Robin | `schedule_rr.c` | `make rr` |
-| Round Robin + Priority | `schedule_rrp_fifo.c` | `make priority_rr` |
+| Policy | Arquivo | Comando `make` | Binário gerado |
+|------------------------|-----------------------|--------------------|-------------------|
+| Smallest-Job First | `schedule_sjf.c` | `make sjf` | `bin/sjf` |
+| Round Robin | `schedule_rr.c` | `make rr` | `bin/rr` |
+| Round Robin + Priority | `schedule_rrp_fifo.c` | `make priority_rr` | `bin/priority_rr` |
+
+Após o build com o comando `make`, o arquivo binário gerado poderá ser executado passando como parâmetro o nome do arquivo contento a lista de tasks desejada, por exemplo:
+
+```sh
+./bin/sjf sjf-schedule.txt
+```
